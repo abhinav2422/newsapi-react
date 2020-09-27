@@ -28,6 +28,18 @@ export default class NewsSources extends Component {
             customClass={source.id === this.props.selectedSource ? 'selectedItem' : ''}
           />
         ))}
+        <div
+          className={`list-item fixed-pos ${this.props.selectedSource === 'fav' ? 'selectedItem' : ''}`}
+          onClick={() => { this.props.changeNewsSource('fav') }}
+        >
+          <List celled relaxed>
+            <List.Item>
+              <List.Content className="list-item-data">
+                <List.Header>Favourites ({this.props.favourite.length})</List.Header>
+              </List.Content>
+            </List.Item>
+          </List>
+        </div>
       </div>
     )
   }

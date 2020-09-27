@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react';
 
 class CustomModal extends Component {
   render() {
-    const { title, header, image, description, actionText } = this.props;
+    const { title, header, image, description, actionText, icon, iconAction, item, iconColor } = this.props;
     return (
       <div>
         <Modal
@@ -11,7 +11,12 @@ class CustomModal extends Component {
           onOpen={() => this.props.changeModalState()}
           open={this.props.isModalOpen}
         >
-          <Modal.Header>{title}</Modal.Header>
+          <Modal.Header>
+            {title}
+            {icon && <div style={{ float: 'right', cursor: 'pointer' }} onClick={() => { iconAction(item) }}>
+              <Icon color={iconColor} name={icon} />
+            </div>}
+          </Modal.Header>
           <Modal.Content image>
             {image && <Image size='medium' src={image} wrapped />}
             <Modal.Description>

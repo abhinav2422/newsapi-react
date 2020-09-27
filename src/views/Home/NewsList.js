@@ -16,6 +16,18 @@ export default class NewsList extends Component {
     });
   }
 
+  containsObj = (obj, value) => {
+    for (let i = 0; i < obj.length; i++) {
+      if (obj[i].title === value.title &&
+        obj[i].description === value.description &&
+        obj[i].content === value.content) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   render() {
     return (
       <div>
@@ -26,6 +38,10 @@ export default class NewsList extends Component {
           header={this.state.selectedNewsArticle.description}
           description={this.state.selectedNewsArticle.content}
           image={this.state.selectedNewsArticle.urlToImage}
+          item={this.state.selectedNewsArticle}
+          icon={'star'}
+          iconAction={this.props.toggleFav}
+          iconColor={this.containsObj(this.props.favourite, this.state.selectedNewsArticle) ? 'yellow' : null}
           actionText={"Close"}
         />
         {this.props.news.map((item, index) => (
@@ -36,6 +52,9 @@ export default class NewsList extends Component {
             item={item}
             image={item.urlToImage}
             itemClickFunc={this.modalState}
+            listFuncIcon={'star'}
+            listFunc={this.props.toggleFav}
+            listFuncIconColor={this.containsObj(this.props.favourite, item) ? 'yellow' : null}
           />
         ))}
       </div>

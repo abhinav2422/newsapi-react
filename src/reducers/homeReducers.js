@@ -45,6 +45,11 @@ export default function (state = initialState, action) {
         loading: false,
         error: "There was some error, please try again"
       };
+    case appConstants.SHOW_FAV_NEWS:
+      return {
+        ...state,
+        news: action.payload
+      }
     default:
       return state;
   }

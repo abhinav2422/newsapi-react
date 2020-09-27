@@ -54,3 +54,10 @@ export const fetchNews = (source = '') => async (dispatch) => {
     })
   }
 }
+
+export const showFavNews = (news) => {
+  return {
+    type: appConstants.SHOW_FAV_NEWS,
+    payload: news
+  }
+}
