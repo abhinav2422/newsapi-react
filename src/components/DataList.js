@@ -3,13 +3,20 @@ import { Image, List } from 'semantic-ui-react';
 
 class DataList extends Component {
   render() {
-    const { image, header, subHeader, selectedSource, sourceId, changeNewsSource } = this.props;
+    const {
+      image,
+      header,
+      subHeader,
+      item,
+      itemClickFunc,
+      customClass
+    } = this.props;
     return (
       <div
-        className={`list-item ${selectedSource === sourceId ? 'selectedItem' : ''}`}
-        onClick={() => { changeNewsSource(sourceId) }}
+        className={`list-item ${customClass}`}
+        onClick={() => { itemClickFunc(item) }}
       >
-        <List celled relaxed>
+        <List celled relaxed selection>
           <List.Item>
             {image && <Image avatar src={image} />}
             <List.Content className="list-item-data">

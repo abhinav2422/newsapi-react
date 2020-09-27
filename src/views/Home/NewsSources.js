@@ -23,9 +23,9 @@ export default class NewsSources extends Component {
           <DataList
             key={source.id}
             header={source.name}
-            sourceId={source.id}
-            selectedSource={this.props.selectedSource}
-            changeNewsSource={this.props.changeNewsSource}
+            item={source.id}
+            itemClickFunc={this.props.changeNewsSource}
+            customClass={source.id === this.props.selectedSource ? 'selectedItem' : ''}
           />
         ))}
       </div>
